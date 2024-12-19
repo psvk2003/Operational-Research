@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plots Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto;
+            width: 80%;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section img {
+            width: 40%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .text {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .text h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .text p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        footer {
+            text-align: center;
+            margin: 50px 0 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background-color: #565e64;
+        }
+    </style>
+</head>
+<body>
+    <h1>Plots Summary</h1>
+
+    <!-- Section 1 -->
+    <div class="section">
+        <img src="{{ url_for('static', filename='images/A2/A2.1efficiency_scores_distribution.png')}}" alt="Plot 1">
+        <div class="text">
+            <h2>Distribution of Efficiency Scores</h2>
+            <p>
+                A histogram displaying the efficiency scores (FY23 Actual Expense as a percentage of FY24 Appropriation) for departments. Lower scores indicate underutilization, while higher scores indicate overspending.
+                <ul>
+                    <li>Identifies whether most departments spend within their appropriated budgets.</li>
+                    <li>Helps spot departments with significant underutilization or overspending issues.</li>
+                    <li>Departments scoring near 100% are likely efficient in utilizing allocated funds.</li>
+                    <li>Provides evidence for adjusting future budget appropriations based on efficiency patterns.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section">
+        <img src="{{ url_for('static', filename='images/A2/A2.2budget_scenarios_comparison.png')}}" alt="Plot 2">
+        <div class="text">
+            <h2>Budget Scenarios Comparison</h2>
+            <p>
+                A grouped bar chart comparing budget allocations across three scenarios—Conservative Growth, Aggressive Optimization, and Strategic Investment—for each expense category.
+                <ul>
+                    <li>Allows stakeholders to evaluate the potential impact of different budgeting strategies.</li>
+                    <li>Highlights areas where aggressive cost-cutting can yield significant savings.</li>
+                    <li>Demonstrates the benefits of targeted investments in critical areas.</li>
+                    <li>Provides a clear visual comparison between current allocations and alternative scenarios.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section">
+        <img src="{{ url_for('static', filename='images/A2/A2.3department_clusters.png')}}" alt="Plot 3">
+        <div class="text">
+            <h2>Department Clusters by Growth and Budget</h2>
+            <p>
+                A scatter plot showing departments grouped into clusters based on growth rate (FY22 to FY25) and budget size using K-means clustering.
+                <ul>
+                    <li>Cluster_0:
+                         High growth rate detected. Consider implementing growth controls.</li>
+                    <li>Cluster_1:
+                        - High growth rate detected. Consider implementing growth controls.
+                        - Large budget allocation. Explore efficiency opportunities.</li>
+                    <li>Cluster_2:
+                        - High growth rate detected. Consider implementing growth controls.</li>
+                    <li>Cluster_3:
+                        - Negative growth trend. Review for potential resource constraints.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section">
+        <img src="{{ url_for('static', filename='images/A2/A2.4expense_category_correlations.png')}}" alt="Plot 4">
+        <div class="text">
+            <h2>Expense Category Correlations</h2>
+            <p>
+                A heatmap showing the correlations between expense categories based on department-wise FY25 budget allocations.
+                <ul>
+                    <li>Identifies relationships between expense categories, such as whether increases in one category align with increases in another.</li>
+                    <li>Helps in reallocating funds by understanding which categories have a strong negative correlation.</li>
+                    <li>Provides insights into how different expense categories interact, aiding in balanced budget planning.</li>
+                    <li>Highlights areas requiring independent analysis due to weak or no correlation.
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <a href="data_analysis" class="btn-back">Back</a>
+        <!-- <p>&copy; 2024 Capital Budget Analysis. All Rights Reserved.</p> -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Budget Optimization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Styling for Main Title and Subtext */
+        .hero {
+            background-color: #f8f9fa;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .info-section {
+            padding: 40px 20px;
+        }
+
+        .info-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .info-section p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .info-section a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .info-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="fas fa-chart-pie"></i>Operating Budget Optimization</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/budget_allocations"><i class="fas fa-wallet"></i> Budget Allocations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/data_analysis"><i class="fas fa-chart-line"></i> Data Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about_us"><i class="fas fa-users"></i> About Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Section -->
+<div class="hero">
+    <h1>FY25 OPERATING BUDGET</h1>
+    <p>Learn about how the Operating Budget supports various services provided by the City.</p>
+</div>
+
+<!-- Additional Information Section -->
+<div class="container info-section">
+    <h2>Overview of FY25 Budget</h2>
+    <p>The FY25 Recommended Operating Budget totals $4.64 billion, reflecting an 8% increase over FY24. It represents an additional $344 million investment in City operations.</p>
+    <p>The Operating Budget supports the day-to-day functions of the City, such as public safety, education, and public health. It also includes mandatory yearly payments for long-term commitments like retirement pensions and debt services related to the Capital Plan.</p>
+    <p>This tool provides detailed insights into the allocation, efficiency, and analysis of the FY25 budget, allowing you to:</p>
+    <ul>
+        <li>Explore department-level budget allocations.</li>
+        <li>Analyze constraints like category spending limits and program-specific priorities.</li>
+        <li>Visualize how changes impact overall expenditure and outcomes.</li>
+    </ul>
+    <p>For more detailed budget data, visit the official dataset: 
+        <a href="https://data.boston.gov/dataset/operating-budget/resource/8f2971f0-7a0d-401d-8376-0289e3b810ba" target="_blank">Operating Budget Dataset</a>.
+    </p>
+    
+    <!-- Indicating that missing values have been filled with the mean -->
+    <p><strong>Data Preprocessing:</strong> Missing values in the budget data have been successfully filled with the mean value of the corresponding budget rows.</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

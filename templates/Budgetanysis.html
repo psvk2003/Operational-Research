@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Analysis</title>
+    <style>
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+
+    background-color:rgb(60, 216, 218) ;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content container */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* Button container for navigation */
+.button-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Navigation Buttons */
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Button hover and active states */
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #004085;
+}
+
+/* Content visibility (default hidden) */
+.content {
+    display: none;
+    margin-top: 30px;
+}
+
+/* Table styling */
+.table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+/* Table styles for better readability */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Table borders and cell padding */
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+/* Table header background */
+th {
+    background-color: #f4f4f9;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Table row hover effect */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Headings */
+h3, h4 {
+    text-align: center;
+    color: #333;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+/* Section titles */
+h4 {
+    color: #4CAF50;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+/* Section styling to separate different content areas */
+.section {
+    margin-bottom: 40px;
+}
+
+.btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background-color: #565e64;
+        }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    table, th, td {
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Budget Analysis</h1>
+</header>
+
+<div class="container">
+    <!-- Main Navigation Buttons -->
+    <div class="button-container">
+        <button onclick="showContent('summary')">Budget Analysis Summary</button>
+        <button onclick="showContent('expense')"> Expense Category Trends</button>
+        <button onclick="showContent('efficiency')"> Department Efficiency Analysis</button>
+    </div>
+
+    <!-- Budget Analysis Summary Section -->
+    <div id="summary" class="content">
+        <h3>Budget Analysis Summary</h3>
+
+        <h4>Total Budget by Year:</h4>
+        <table>
+            <tr><th>Fiscal Year</th><th>Budget Amount</th></tr>
+            <tr><td>FY22</td><td id="budgetFY22">$0</td></tr>
+            <tr><td>FY23</td><td id="budgetFY23">$0</td></tr>
+            <tr><td>FY24</td><td id="budgetFY24">$0</td></tr>
+            <tr><td>FY25</td><td id="budgetFY25">$0</td></tr>
+        </table>
+
+        <h4>Year-over-Year Changes:</h4>
+        <table>
+            <tr><th>Period</th><th>Change (%)</th></tr>
+            <tr><td>FY22 to FY23</td><td>5.76%</td></tr>
+            <tr><td>FY23 to FY24</td><td>5.73%</td></tr>
+            <tr><td>FY24 to FY25</td><td>8.03%</td></tr>
+        </table>
+
+        <h4>Top 5 Departments by FY25 Budget:</h4>
+        <table>
+            <tr><th>Department</th><th>FY25 Budget</th></tr>
+            <tr><td>Boston Public Schools</td><td>$1,526,629,446.00</td></tr>
+            <tr><td>Police Department</td><td>$474,307,787.48</td></tr>
+            <tr><td>Pensions</td><td>$422,494,346.00</td></tr>
+            <tr><td>Fire Department</td><td>$306,569,809.92</td></tr>
+            <tr><td>Charter School Tuition</td><td>$287,286,130.00</td></tr>
+        </table>
+    </div>
+
+    <!-- Expense Category Trends Section -->
+    <div id="expense" class="content">
+        <h3>Expense Category Trends</h3>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Expense Category</th>
+                    <th>FY22 Actual Expense</th>
+                    <th>FY23 Actual Expense</th>
+                    <th>FY24 Appropriation</th>
+                    <th>FY25 Budget</th>
+                    <th>Actual to Actual Change %</th>
+                    <th>Actual to Appro Change %</th>
+                    <th>Appro to FY2 Change %</th>
+                </tr>
+                <tr><td>Contractual Services</td><td>$485,780,000.00</td><td>$481,250,900.00</td><td>$513,881,900.00</td><td>$555,756,700.00</td><td>-0.93%</td><td>6.78%</td><td>8.15%</td></tr>
+                <tr><td>Current Charges & Obligations</td><td>$249,268,100.00</td><td>$261,491,700.00</td><td>$293,756,200.00</td><td>$301,099,200.00</td><td>4.90%</td><td>-12.34%</td><td>2.50%</td></tr>
+                <tr><td>Equipment</td><td>$31,470,470.00</td><td>$41,647,070.00</td><td>$39,863,970.00</td><td>$43,410,860.00</td><td>-32.34%</td><td>-4.28%</td><td>8.90%</td></tr>
+                <tr><td>Fixed Expenses</td><td>$184,271,900.00</td><td>$198,400,100.00</td><td>$246,202,700.00</td><td>$276,436,900.00</td><td>-7.67%</td><td>-24.09%</td><td>12.28%</td></tr>
+                <tr><td>Other Expenses</td><td>$888,050,000.00</td><td>$989,572,600.00</td><td>$1,010,529,000.00</td><td>$1,058,449,000.00</td><td>-11.43%</td><td>-2.12%</td><td>4.74%</td></tr>
+                <tr><td>Personnel Services</td><td>$1,960,228,000.00</td><td>$2,040,853,000.00</td><td>$2,144,210,000.00</td><td>$2,355,856,000.00</td><td>-4.11%</td><td>-5.06%</td><td>9.87%</td></tr>
+                <tr><td>Supplies & Materials</td><td>$39,563,150.00</td><td>$46,474,220.00</td><td>$43,720,020.00</td><td>$45,915,810.00</td><td>-17.47%</td><td>-5.93%</td><td>5.02%</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Department Efficiency Analysis Section -->
+    <div id="efficiency" class="content">
+        <h3>Department Efficiency Analysis</h3>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Cabinet</th>
+                    <th>Department</th>
+                    <th>FY22 Actual Expense</th>
+                    <th>FY23 Actual Expense</th>
+                    <th>FY24 Appropriation</th>
+                    <th>FY25 Budget</th>
+                    <th>FY23 Efficiency</th>
+                    <th>Spending Pattern</th>
+                </tr>
+                <tr><td>Arts & Culture Cabinet</td><td>Office of Arts & Culture</td><td>$3,495,272.81</td><td>$3,522,626.22</td><td>$4,530,092.83</td><td>$4,521,712.06</td><td>77.76%</td><td>Under Spender</td></tr>
+                <tr><td>Community Engagement Cabinet</td><td>Neighborhood Services</td><td>$4,221,960.75</td><td>$4,260,967.11</td><td>$5,154,595.39</td><td>$5,529,847.33</td><td>82.66%</td><td>Under Spender</td></tr>
+                <tr><td>Economic Opportunity & Inclusion Cabinet</td><td>Consumer Affairs & Licensing</td><td>$1,651,421.27</td><td>$1,784,281.09</td><td>$1,959,730.06</td><td>$2,008,826.99</td><td>91.05%</td><td>Efficient</td></tr>
+                <tr><td>Economic Opportunity & Inclusion Cabinet</td><td>Office of Economic Opportunity & Inclusion</td><td>$3,874,923.73</td><td>$5,263,992.77</td><td>$6,592,765.67</td><td>$7,130,212.20</td><td>79.84%</td><td>Under Spender</td></tr>
+                <tr><td>Economic Opportunity & Inclusion Cabinet</td><td>Office of Tourism</td><td>$2,032,210.67</td><td>$1,093,248.43</td><td>$1,799,101.68</td><td>$1,879,434.24</td><td>60.77%</td><td>Under Spender</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showContent(contentId) {
+        const sections = document.querySelectorAll('.content');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(contentId).style.display = 'block';
+    }
+
+     // Animate the number increment using requestAnimationFrame
+     function animateNumber(id, targetNumber) {
+        let currentNumber = 0;
+        const startTime = performance.now();
+        const duration = 2000; // 1 second animation duration
+
+        function updateNumber(timestamp) {
+            const elapsedTime = timestamp - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
+            currentNumber = targetNumber * progress;
+            document.getElementById(id).textContent = `$${Math.round(currentNumber).toLocaleString()}`;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateNumber);
+            }
+        }
+
+        requestAnimationFrame(updateNumber);
+    }
+    window.onload = () => {
+        animateNumber('budgetFY22', 3838631715.66);
+        animateNumber('budgetFY23', 4059689437.60);
+        animateNumber('budgetFY24', 4292164103.10);
+        animateNumber('budgetFY25', 4636924670.23);
+    }
+</script>
+<footer>
+    <a href="/data_analysis" class="btn-back">Back</a>
+</footer>
+
+</body>
+</html>

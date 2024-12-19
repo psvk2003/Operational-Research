@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Optimization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0d6efd;
+        }
+        #results {
+            display: none;
+        }
+        .spinner {
+            display: none;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .spinner i {
+            font-size: 2rem;
+            color: #0d6efd;
+        }
+        .scenario-description {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 0.9rem;
+        }
+        .scenario-description h5 {
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+        .scenario-description p {
+            margin-bottom: 5px;
+        }
+        table thead th {
+            text-align: left; /* Center-align table headers */
+        }
+        table tbody td {
+            text-align: left; /* Left-align table body cells */
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="fas fa-chart-pie"></i>Operating Budget Optimization</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="fas fa-home"></i>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/budget_allocations"><i class="fas fa-wallet"></i>Budget Allocations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/data_analysis"><i class="fas fa-chart-line"></i>Data Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about_us"><i class="fas fa-users"></i>About Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-4">
+    <h1>Budget Optimization Scenarios</h1>
+    <div class="mb-3">
+        <label for="scenarioSelect" class="form-label">Select a Scenario:</label>
+        <select class="form-select" id="scenarioSelect">
+            <option value="">-- Select Scenario --</option>
+            <option value="Scenario_1">Scenario 1</option>
+            <option value="Scenario_2">Scenario 2</option>
+            <option value="Scenario_3">Scenario 3</option>
+            <option value="Scenario_4">Scenario 4</option>
+            <option value="Scenario_5">Scenario 5</option>
+            <option value="Scenario_6">Scenario 6</option>
+        </select>
+    </div>
+    <button id="runScenarioBtn" class="btn btn-primary" disabled>Run Scenario</button>
+
+    <div class="spinner" id="loadingSpinner">
+        <i class="fas fa-spinner fa-spin"></i>
+    </div>
+
+    <!-- Scenario Descriptions (above Results) -->
+    <div id="scenarioDescriptions">
+        <div id="description_Scenario_1" class="scenario-description" style="display: none;">
+            <h5>Scenario 1: Maximize FY25 Allocations</h5>
+            <p>This scenario maximizes the FY25 budget allocations across programs and categories without exceeding the total available budget for FY25. There are no department-specific constraints, providing maximum flexibility in how the budget is allocated. It seeks to optimize the overall allocation with no restrictions on individual programs or expense categories.</p>
+        </div>
+        <div id="description_Scenario_2" class="scenario-description" style="display: none;">
+            <h5>Scenario 2: Departmental Limits (110% of FY24 Appropriations)</h5>
+            <p>In this scenario, each department’s total allocation is capped at 110% of their FY24 appropriation. This ensures that no department experiences more than a 10% increase in their budget allocation. The objective is to allow for slight increases in funding while ensuring fiscal responsibility and controlling large budgetary growth within departments.</p>
+        </div>
+        <div id="description_Scenario_3" class="scenario-description" style="display: none;">
+            <h5>Scenario 3: Expense Category Limit (10% of Total FY25 Budget)</h5>
+            <p>This scenario imposes a constraint on expense categories, limiting any category’s allocation to a maximum of 10% of the total FY25 budget. This ensures a diversified budget distribution and prevents a disproportionate amount of funds being allocated to a single expense category, helping maintain balance and equity across the allocation process.</p>
+        </div>
+        <div id="description_Scenario_4" class="scenario-description" style="display: none;">
+            <h5>Scenario 4: Departmental Caps (FY24 Appropriations Only)</h5>
+            <p>This scenario restricts the budget allocation for each department to its FY24 appropriation amount. No department can receive more funding than it had in FY24. This ensures that departments will not receive additional funding compared to their previous fiscal year allocation, maintaining a stable funding environment.</p>
+        </div>
+        <div id="description_Scenario_5" class="scenario-description" style="display: none;">
+            <h5>Scenario 5: Departmental Flexibility (105% of FY24 Appropriations)</h5>
+            <p>In this scenario, departments are allowed up to 105% of their FY24 appropriation, providing them with a 5% flexibility in their budget allocation. This extra flexibility helps accommodate growth and changes in operational needs while maintaining budget discipline. It strikes a balance between stability and adaptability for departments.</p>
+        </div>
+        <div id="description_Scenario_6" class="scenario-description" style="display: none;">
+            <h5>Scenario 6: Expense Category Cap (30% of Total FY25 Budget)</h5>
+            <p>This scenario restricts the allocation for any individual expense category to a maximum of 30% of the total FY25 budget. This helps prevent over-concentration of resources in any one category, ensuring that the budget is spread across all necessary areas of operation. It maintains a balanced approach by placing caps on categories that may otherwise consume too large a portion of the budget.</p>
+        </div>
+    </div>
+
+    <div id="results" class="mt-4">
+        <h3>Results</h3>
+        <div id="plots" class="mb-4">
+            <!-- <img id="programPlot" src="" alt="Program Plot" class="img-fluid mb-3"> -->
+            <img id="categoryPlot" src="" alt="Category Plot" class="img-fluid mb-3">
+        </div>
+        <div class="table-responsive">
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                <input type="text" class="form-control" id="searchInput" placeholder="Search the table...">
+            </div>
+            <div id="resultTable"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const scenarioDescriptions = {
+            "Scenario_1": "#description_Scenario_1",
+            "Scenario_2": "#description_Scenario_2",
+            "Scenario_3": "#description_Scenario_3",
+            "Scenario_4": "#description_Scenario_4",
+            "Scenario_5": "#description_Scenario_5",
+            "Scenario_6": "#description_Scenario_6"
+        };
+
+        // Enable Run Scenario button and show description when a scenario is selected
+        $("#scenarioSelect").change(function () {
+            $("#results").hide(); // Hide results when selection changes
+            $("#plots img").attr("src", "");
+            $("#resultTable").empty();
+            $("#searchInput").val("");
+
+            const selectedScenario = $(this).val();
+            $("#runScenarioBtn").prop("disabled", !selectedScenario);
+
+            // Hide all descriptions and then show the selected one
+            if (selectedScenario) {
+                $(".scenario-description").slideUp(); // Hide all descriptions
+                $(scenarioDescriptions[selectedScenario]).slideDown(); // Show selected scenario's description
+            } else {
+                $(".scenario-description").slideDown(); // Show all descriptions if no scenario is selected
+            }
+        });
+
+        // Handle Run Scenario button click
+        $("#runScenarioBtn").click(function () {
+            const scenario = $("#scenarioSelect").val();
+
+            if (!scenario) {
+                alert("Please select a scenario.");
+                return;
+            }
+
+            // Show loading spinner
+            $("#loadingSpinner").show();
+            $("#results").hide();
+
+            $.post("/run_scenario", {scenario_name: scenario}, function (data) {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    // Display results
+                    $("#results").show();
+                    $("#programPlot").attr("src", "/" + data.program_plot_path);
+                    $("#categoryPlot").attr("src", "/" + data.category_plot_path);
+                    $("#resultTable").html(data.result_html);
+
+                    // Add search functionality
+                    $("#searchInput").on("input", function () {
+                        const searchTerm = $(this).val().toLowerCase();
+                        $("#resultTable tbody tr").each(function () {
+                            const rowText = $(this).text().toLowerCase();
+                            $(this).toggle(rowText.includes(searchTerm));
+                        });
+                    });
+                }
+            }).fail(function (xhr) {
+                alert("Error: " + xhr.responseJSON.error);
+            }).always(function () {
+                // Hide loading spinner
+                $("#loadingSpinner").hide();
+            });
+        });
+    });
+</script>
+</body>
+</html>

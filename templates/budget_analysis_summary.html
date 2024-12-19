@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plots Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto;
+            width: 80%;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section img {
+            width: 40%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .text {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .text h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .text p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        footer {
+            text-align: center;
+            margin: 50px 0 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background-color: #565e64;
+        }
+    </style>
+</head>
+<body>
+    <h1>Plots Summary</h1>
+
+    <!-- Section 1 -->
+    <div class="section">
+        <img src="{{ url_for('static', filename='images/A1/A1_Imagesfy25_budget_by_category.png')}}" alt="Plot 1">
+        <div class="text">
+            <h2>FY25 Budget by Expense Category</h2>
+            <p>
+                This horizontal bar chart shows the FY25 budget allocation for different expense categories, sorted in ascending order.
+                <ul>
+                    <li>Categories receiving the highest budget reflect the government or organization’s focus areas.</li>
+                    <li>The visual ordering makes it easy to compare which categories are underfunded or highly funded.</li>
+                    <li>Identifies potential areas requiring reallocation based on the organization's goals.</li>
+                    <li>Helps stakeholders understand how funds are distributed among various categories.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Section 2 -->
+    <div class="section">
+        <img src="{{ url_for('static', filename='images/A1/A3_Imagesbudget_trends_by_cabinet.png')}}" alt="Plot 2">
+        <div class="text">
+            <h2>Budget Trends by Cabinet</h2>
+            <p>
+                This grouped bar chart compares budget allocations for different cabinets across fiscal years (FY22 to FY25).
+                <ul>
+                    <li>Provides a clear trend for each cabinet's budget, helping identify increasing or decreasing allocations.</li>
+                    <li>Highlights cabinets with significant budget changes, aiding in identifying departments with expanded or reduced mandates.</li>
+                    <li>Helps understand how priorities may have shifted over time.</li>
+                    <li>Links budget changes to new policies, showing where the administration is investing more resources.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section">
+        <img src="{{ url_for('static', filename='images/A1/A2_Imagesfy25_budget_distribution.png')}}" alt="Plot 3">
+        <div class="text">
+            <h2>FY25 Budget Distribution by Expense Category</h2>
+            <p>
+                A box plot that shows the distribution of FY25 budget allocations within each expense category.
+                <ul>
+                    <li>Highlights the spread and variability of budgets within each category.</li>
+                    <li>Identifies categories with unusually high or low budgets, which might need further investigation.</li>
+                    <li>Provides a summary of median, upper, and lower quartiles for better understanding of typical funding levels.</li>
+                    <li>Shows which categories have uniform budget distributions and which are more erratic.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section">
+        <img src="{{ url_for('static', filename='images/A1/A4_Imagesbudget_growth_rates.png')}}" alt="Plot 4">
+        <div class="text">
+            <h2>Distribution of Budget Growth Rates (FY22 to FY25)</h2>
+            <p>
+                A histogram with a KDE (kernel density estimate) curve showing the growth rates of budgets from FY22 to FY25.
+                <ul>
+                    <li>Highlights whether most categories experienced positive or negative growth.</li>
+                    <li>Shows the financial health of departments over time, with a focus on expansion versus contraction.</li>
+                    <li>Identifies the average growth rate, helping set expectations for future fiscal years.</li>
+                    <li>Highlights extreme growth rates, both positive and negative, which could indicate issues like overfunding or underfunding.
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <a href="/data_analysis" class="btn-back">Back</a>
+        <!-- <p>&copy; 2024 Capital Budget Analysis. All Rights Reserved.</p> -->
+    </footer>
+</body>
+</html>
